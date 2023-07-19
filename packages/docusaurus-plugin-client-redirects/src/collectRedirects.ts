@@ -80,7 +80,7 @@ function validateCollectedRedirects(
   }
 
   const allowedToPaths = pluginContext.relativeRoutesPaths;
-  const toPaths = redirects.map((redirect) => redirect.to);
+  const toPaths = redirects.map((redirect) => redirect.to.replace(/#(.*)/, ''));
   const trailingSlashConfig = pluginContext.siteConfig.trailingSlash;
   // Key is the path, value is whether a valid toPath with a different trailing
   // slash exists; if the key doesn't exist it means it's valid

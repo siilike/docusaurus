@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {Joi, PathnameSchema} from '@docusaurus/utils-validation';
+import {Joi, PathnameSchema, URISchema} from '@docusaurus/utils-validation';
 import type {OptionValidationContext} from '@docusaurus/types';
 
 export type RedirectOption = {
@@ -45,7 +45,7 @@ export const DEFAULT_OPTIONS: Partial<PluginOptions> = {
 };
 
 const RedirectPluginOptionValidation = Joi.object<RedirectOption>({
-  to: PathnameSchema.required(),
+  to: URISchema.required(),
   from: Joi.alternatives().try(
     PathnameSchema.required(),
     Joi.array().items(PathnameSchema.required()),

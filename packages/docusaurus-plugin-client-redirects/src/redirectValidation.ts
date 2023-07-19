@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import {Joi, PathnameSchema} from '@docusaurus/utils-validation';
+import {Joi, PathnameSchema, URISchema} from '@docusaurus/utils-validation';
 import type {RedirectItem} from './types';
 
 const RedirectSchema = Joi.object<RedirectItem>({
   from: PathnameSchema.required(),
-  to: PathnameSchema.required(),
+  to: URISchema.required(),
 });
 
 export function validateRedirect(redirect: RedirectItem): void {
